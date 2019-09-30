@@ -8,11 +8,13 @@
         // Typescript
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-explicit-any": "off",
 
         // React
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "react/react-in-jsx-scope": "off"
+        "react/react-in-jsx-scope": "off",
+        "react/no-children-prop": "off"
     },
     "parser": "@typescript-eslint/parser",
     "plugins": ["react-hooks"],
