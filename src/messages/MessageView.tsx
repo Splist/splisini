@@ -40,8 +40,8 @@ export const MessageView: FC = () => {
             return {
                 ...prev,
                 messages: [
-                    ...prev.messages,
                     data.newMessage,
+                    ...prev.messages,
                 ],
             };
         },
@@ -55,5 +55,6 @@ export const MessageView: FC = () => {
         data.messages.map((msg: any) =>
             <li key={msg.id}>{msg.content}</li>
         )
+        .reverse()
     }</ul>
 };
