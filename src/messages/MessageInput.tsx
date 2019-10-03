@@ -1,6 +1,6 @@
-import { createElement, FC, useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
+import React, { FC, useState } from 'react';
 
 const SEND_MESSAGE = gql`
     mutation($input: SendMessageInput!) {
@@ -11,30 +11,27 @@ const SEND_MESSAGE = gql`
 `;
 
 export const MessageInput: FC = () => {
-
     const [content, setContent] = useState('');
 
     const [sendMessage] = useMutation(SEND_MESSAGE);
 
+    return (
+        <input
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            onKeyPress={e => {
+                if (e.key !== 'Enter') return;
 
-    return <input
+                sendMessage({
+                    variables: {
+                        input: {
+                            content
+                        }
+                    }
+                });
 
-        value={content}
-        onChange={e => setContent(e.target.value)}
-
-        onKeyPress={e => {
-
-            if (e.key !== 'Enter') return;
-
-            sendMessage({
-                variables: {
-                    input: {
-                        content,
-                    },
-                },
-            });
-
-            setContent('');
-        }}
-    />
+                setContent('');
+            }}
+        />
+    );
 };

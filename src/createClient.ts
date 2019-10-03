@@ -7,13 +7,11 @@ import { getMainDefinition } from 'apollo-utilities';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
 
-
 interface CreateClientOptions {
     url: string;
 }
 
 const getUrls = (rawUrl: string) => {
-
     const url = new URL(rawUrl);
 
     const httpUrl = url.toString();
@@ -28,56 +26,45 @@ const getUrls = (rawUrl: string) => {
 };
 
 export const createClient = (options: CreateClientOptions) => {
-
     const [httpUrl, wsUrl] = getUrls(options.url);
 
     const errorLink = onError(({ graphQLErrors, networkError }) => {
-
         if (graphQLErrors)
             graphQLErrors.map(({ message, locations, path }) =>
-                console.error(
-                    `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-                ),
+                console.error(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
             );
 
-        if (networkError)
-            console.error(`[Network error]: ${networkError}`);
+        if (networkError) console.error(`[Network error]: ${networkError}`);
     });
 
     const httpLink = new HttpLink({
-        uri: httpUrl,
+        uri: httpUrl
     });
 
     const wsLink = new WebSocketLink({
         uri: wsUrl,
         options: {
-            reconnect: true,
-        },
+            reconnect: true
+        }
     });
 
     // Use ws if subscription, http for everything else
     const splitLink = split(
         ({ query }) => {
             const definition = getMainDefinition(query);
-            return (
-                definition.kind === 'OperationDefinition' &&
-                definition.operation === 'subscription'
-            );
+            return definition.kind === 'OperationDefinition' && definition.operation === 'subscription';
         },
         wsLink,
-        httpLink,
+        httpLink
     );
 
-    const link = ApolloLink.from([
-        errorLink,
-        splitLink,
-    ]);
+    const link = ApolloLink.from([errorLink, splitLink]);
 
     const cache = new InMemoryCache();
 
     const client = new ApolloClient({
         link,
-        cache,
+        cache
     });
 
     return client;
