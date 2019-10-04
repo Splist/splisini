@@ -32,6 +32,7 @@
         "eslint-plugin-react-hooks": "^2.0.1",
         "parcel-bundler": "^1.12.3",
         "prettier": "^1.18.2",
+        "typedoc": "^0.15.0",
         "typescript": "^3.6.3"
     },
     "license": "AGPL-3.0",
@@ -41,6 +42,7 @@
         "autofix": "npm run lint -- --fix; npm run check-formatting -- --write",
         "build": "parcel build src/index.html",
         "check-formatting": "prettier --ignore-path .gitignore --check \"./**/*.{{j,t}{s,sx},flow,{{sc,c},le}ss,json,m{d,dx},{y,ya}ml}\"",
+        "generate-docs": "typedoc",
         "lint": "eslint --ignore-path .gitignore ./**/*.t{s,sx}",
         "start": "parcel src/index.html --port 8081"
     },
