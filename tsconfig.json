@@ -1,13 +1,14 @@
 {
     "compilerOptions": {
-        "locale": "en",
-        "target": "es2019",
-        "lib": ["esnext", "dom"],
-        "module": "commonjs",
-        "strict": true,
+        "esModuleInterop": true,
         "jsx": "react",
-        "esModuleInterop": true
+        "lib": ["esnext", "dom"],
+        "locale": "en",
+        "module": "commonjs",
+        "outDir": "compiled",
+        "strict": true,
+        "target": "es2019"
     },
-    "include": ["./src/**/*"],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules"],
+    "include": ["./src/**/*"]
 }
