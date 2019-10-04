@@ -25,6 +25,11 @@ jobs:
               run: yarn run lint
             - name: Compile TypeScript
               run: yarn run compile
+            - name: Upload compiled TypeScript
+              uses: actions/upload-artifact@master
+              with:
+                  name: compiled
+                  path: ./compiled
             - name: Build production website
               run: yarn run build
             - name: Upload production website
