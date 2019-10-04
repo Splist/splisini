@@ -27,6 +27,11 @@ jobs:
               run: yarn run compile
             - name: Build production website
               run: yarn run build
+            - name: Upload production website
+              uses: actions/upload-artifact@master
+              with:
+                  name: website
+                  path: ./dist
             - name: Generate TypeDocs
               run: yarn run generate-docs
             - name: Upload docs
