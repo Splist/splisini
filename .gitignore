@@ -1,9 +1,13 @@
-
+# Generic Node.js files
 node_modules/
 yarn-error.log
 
+# Parcel
 .cache/
 dist/
 
 # TypeDoc output
 docs
+
+# TypeScript output directory (specified in tsconfig.json)
+compiled
