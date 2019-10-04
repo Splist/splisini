@@ -1,0 +1,34 @@
+name: Node.js CI
+
+on: push
+
+jobs:
+    test:
+        runs-on: ubuntu-18.04
+
+        steps:
+            - name: Git checkout
+              uses: actions/checkout@master
+              with:
+                  fetch-depth: 0
+            - name: Set up Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: '10.x'
+            - name: Install Yarn
+              run: curl -o- -L https://yarnpkg.com/install.sh | bash
+            - name: Install dependencies
+              run: yarn install
+            - name: Check formatting
+              run: yarn run check-formatting
+            - name: Lint TypeScript
+              run: yarn run lint
+            - name: Compile TypeScript
+              run: yarn run build
+            - name: Generate TypeDocs
+              run: yarn run generate-docs
+            - name: Upload docs
+              uses: actions/upload-artifact@master
+              with:
+                  name: typedoc
+                  path: ./docs
