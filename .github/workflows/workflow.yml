@@ -24,6 +24,8 @@ jobs:
             - name: Lint TypeScript
               run: yarn run lint
             - name: Compile TypeScript
+              run: yarn run compile
+            - name: Build production website
               run: yarn run build
             - name: Generate TypeDocs
               run: yarn run generate-docs
