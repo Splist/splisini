@@ -4,7 +4,7 @@
         "jsx": "react",
         "lib": ["esnext", "dom"],
         "locale": "en",
-        "module": "commonjs",
+        "module": "es2015",
         "outDir": "compiled",
         "strict": true,
         "target": "es2019"
