@@ -1,9 +1,23 @@
 {
-    "browserslist": [
-        "last 1 Chrome version"
-    ],
+    "name": "@splist/splisini",
+    "version": "0.0.0",
+    "main": "src/index.html",
+    "license": "AGPL-3.0",
+    "scripts": {
+        "start": "parcel src/index.html --port 8081",
+        "build": "parcel build src/index.html",
+        "fix": "npm run lint -- --fix; npm run check-formatting -- --write",
+        "compile": "tsc",
+        "lint": "eslint --ignore-path .gitignore ./**/*.t{s,sx}",
+        "format": "prettier --ignore-path .gitignore --check \"./**/*.{{j,t}{s,sx},flow,{{sc,c},le}ss,json,m{d,dx},{y,ya}ml}\"",
+        "gendocs": "typedoc"
+    },
     "contributors": [
         "Jdender~ <jdenderplays@gmail.com> (https://github.com/Jdender)"
+    ],
+    "browserslist": [
+        "last 1 Chrome version",
+        "last 1 Firefox version"
     ],
     "dependencies": {
         "@apollo/react-hooks": "^3.1.1",
@@ -35,18 +49,5 @@
         "prettier": "^1.18.2",
         "typedoc": "^0.15.0",
         "typescript": "^3.6.3"
-    },
-    "license": "AGPL-3.0",
-    "main": "src/index.html",
-    "name": "@splist/splisini",
-    "scripts": {
-        "autofix": "npm run lint -- --fix; npm run check-formatting -- --write",
-        "build": "parcel build src/index.html",
-        "compile": "tsc",
-        "check-formatting": "prettier --ignore-path .gitignore --check \"./**/*.{{j,t}{s,sx},flow,{{sc,c},le}ss,json,m{d,dx},{y,ya}ml}\"",
-        "generate-docs": "typedoc",
-        "lint": "eslint --ignore-path .gitignore ./**/*.t{s,sx}",
-        "start": "parcel src/index.html --port 8081"
-    },
-    "version": "0.0.0"
+    }
 }

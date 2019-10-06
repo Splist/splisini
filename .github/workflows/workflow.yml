@@ -20,7 +20,7 @@ jobs:
             - name: Install dependencies
               run: yarn install
             - name: Check formatting
-              run: yarn run check-formatting
+              run: yarn run format
             - name: Lint TypeScript
               run: yarn run lint
             - name: Compile TypeScript
@@ -38,7 +38,7 @@ jobs:
                   name: website
                   path: ./dist
             - name: Generate TypeDocs
-              run: yarn run generate-docs
+              run: yarn run gendocs
             - name: Upload docs
               uses: actions/upload-artifact@master
               with:
