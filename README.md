@@ -11,10 +11,6 @@ Splist client.
 This project is not yet in a production ready state and is still in heavy development.
 As such a proper usage guide hasn't been written yet.
 
-## Installation
-
-Same as above.
-
 ## Development
 
 TODO
