@@ -6,7 +6,7 @@
     "scripts": {
         "start": "parcel src/index.html --port 8081",
         "build": "parcel build src/index.html",
-        "fix": "npm run lint -- --fix; npm run check-formatting -- --write",
+        "fix": "npm run lint -- --fix; npm run format -- --write",
         "compile": "tsc",
         "lint": "eslint --ignore-path .gitignore ./**/*.t{s,sx}",
         "format": "prettier --ignore-path .gitignore --check \"./**/*.{{j,t}{s,sx},flow,{{sc,c},le}ss,json,m{d,dx},{y,ya}ml}\"",
